@@ -19,8 +19,8 @@ namespace deVoid.UIFramework.Examples
     /// </summary>
     public class LegacyAnimationScreenTransition : ATransitionComponent
     {
-        [SerializeField] private AnimationClip clip;
-        [SerializeField] private bool playReverse;
+        [SerializeField] private AnimationClip clip = null;
+        [SerializeField] private bool playReverse = false;
 
         private Action previousCallbackWhenFinished;
         

@@ -13,7 +13,7 @@ namespace deVoid.UIFramework
     public class SimpleFadeTransition : ATransitionComponent
     {
         [SerializeField] private float fadeDuration = 0.5f;
-        [SerializeField] private bool fadeOut;
+        [SerializeField] private bool fadeOut = false;
 
         private CanvasGroup canvasGroup;
         private float timer;
