@@ -12,17 +12,23 @@ then drag the Prefab onto your scene
 
 *Step 2:*
 Get a reference to your UI Frame and register some screens
-`uiFrame.RegisterScreen("YourScreenId", yourScreenPrefab);`
+```c#
+uiFrame.RegisterScreen("YourScreenId", yourScreenPrefab);
+```
 
 *Step 3:*
 Show your screens
-`uiFrame.OpenWindow("YourWindowId");`
-`uiFrame.ShowPanel("YourPanelId");`
+```c#
+uiFrame.OpenWindow("YourWindowId");
+uiFrame.ShowPanel("YourPanelId");
+```
 
 Or, if you have some data payload
 
-`uiFrame.OpenWindow("YourWindowId", yourWindowProperties);`
-`uiFrame.ShowPanel("YourPanelId", yourPanelProperties);`
+```c#
+uiFrame.OpenWindow("YourWindowId", yourWindowProperties);
+uiFrame.ShowPanel("YourPanelId", yourPanelProperties);
+```
 
 *Step 4:*
 Now that you're familiar with the API, right click on project view
@@ -30,7 +36,9 @@ Now that you're familiar with the API, right click on project view
 
 Rig your UI Frame prefab as the UI Template, drag all your screens in the Screens To Register list and simply do
 
-`uiFrame = yourUiSettings.CreateUIInstance();`
+```c#
+uiFrame = yourUiSettings.CreateUIInstance();
+```
 
 Which will give you a new UI Frame instance and automatically do *Step 2* for you.
 
