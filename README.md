@@ -1,4 +1,8 @@
 # deVoid UI Framework
+![Example Project](https://img.itch.zone/aW1nLzE5NTQzODYuZ2lm/original/%2BrlumK.gif)
+
+*You can see a live demo of the [the examples repo](https://github.com/yankooliveira/uiframework_examples) at my [itch.io page](https://yanko.itch.io/devui)*
+
 **TL;DR:**
 *Step 1:*
 
