@@ -235,6 +235,18 @@ namespace deVoid.UIFramework
         }
 
         /// <summary>
+        /// Checks if a given Window is open.
+        /// </summary>
+        /// <param name="windowId">Window identifier.</param>
+        public bool IsWindowOpen(string windowId) {
+            if (string.IsNullOrEmpty(windowId))
+            {
+                return false;
+            }
+            return windowLayer.CurrentWindow?.ScreenId == windowId;
+        }
+
+        /// <summary>
         /// Hide all screens
         /// </summary>
         /// <param name="animate">Defines if screens should the screens animate out or not.</param>
