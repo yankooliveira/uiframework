@@ -238,7 +238,6 @@ namespace deVoid.UIFramework
         /// Checks if a given Window is open.
         /// </summary>
         /// <param name="windowId">Window identifier.</param>
-        /// <returns></returns>
         public bool IsWindowOpen(string windowId) {
             if (string.IsNullOrEmpty(windowId))
             {
