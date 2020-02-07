@@ -70,14 +70,20 @@ namespace deVoid.UIFramework
                 AddTransition(screen);
                 screen.Hide();
 
-                CurrentWindow = null;
-
-                if (windowQueue.Count > 0) {
-                    ShowNextInQueue();
-                }
-                else if (windowHistory.Count > 0) {
-                    ShowPreviousInHistory();
-                }
+                Action<IUIScreenController> outTransitionFinishedHandler = null;
+                outTransitionFinishedHandler = (controller) => {
+                    CurrentWindow = null;
+                    if (windowQueue.Count > 0)
+                    {
+                        ShowNextInQueue();
+                    }
+                    else if (windowHistory.Count > 0)
+                    {
+                        ShowPreviousInHistory();
+                    }
+                    screen.OutTransitionFinished -= outTransitionFinishedHandler;
+                };
+                screen.OutTransitionFinished += outTransitionFinishedHandler;
             }
             else {
                 Debug.LogError(
