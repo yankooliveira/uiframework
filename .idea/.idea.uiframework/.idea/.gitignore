@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/.idea.uiframework.iml
+/projectSettingsUpdater.xml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../../../../:\workspace\funzy\git\frontend\uiframework\.idea\.idea.uiframework\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

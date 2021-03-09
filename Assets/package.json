@@ -1,0 +1,9 @@
+{
+  "name": "funzygames.uiframework",
+  "displayName": "FunzyGames Uiframework",
+  "unity": "2020.1",
+  "description": "FunzyGames Uiframework package",
+  "version": "1.0.0",
+    "dependencies": {
+    }
+}
