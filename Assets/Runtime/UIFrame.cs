@@ -258,6 +258,15 @@ namespace deVoid.UIFramework
         public void CloseAllWindows(bool animate = true) {
             windowLayer.HideAll(animate);
         }
+        
+        #region // TODO: (5) keep plugin source code untouched and move out logic to extensions
+                
+        public void UnregisterAll() {
+            windowLayer.UnregisterAll();
+            panelLayer.UnregisterAll();
+        }
+        
+        #endregion
 
         /// <summary>
         /// Checks if a given screen id is registered to either the Window or Panel layers

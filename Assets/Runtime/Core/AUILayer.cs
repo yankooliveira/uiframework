@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace deVoid.UIFramework {
     /// <summary>
@@ -138,6 +139,21 @@ namespace deVoid.UIFramework {
                 screen.Value.Hide(shouldAnimateWhenHiding);
             }
         }
+        
+        
+        #region // TODO: (5) keep plugin source code untouched and move out logic to extensions
+
+        /// <summary>
+        /// Added by Eli Atlas.
+        /// Need this for changing scenes.
+        /// </summary>
+        public void UnregisterAll() {
+            foreach (var screen in registeredScreens.ToList()) {
+                UnregisterScreen(screen.Key, screen.Value);
+            }
+        }
+
+        #endregion
 
         protected virtual void ProcessScreenRegister(string screenId, TScreen controller) {
             controller.ScreenId = screenId;
