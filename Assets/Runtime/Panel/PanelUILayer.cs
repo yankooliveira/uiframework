@@ -29,6 +29,19 @@ namespace deVoid.UIFramework {
         }
 
         public override void ShowScreen<TProps>(IPanelController screen, TProps properties) {
+            if (properties is IPanelProperties) // This fixes oppening window with different priority during runtime
+            {
+                var panelProperties = (IPanelProperties) properties;
+                if (screen.Priority != panelProperties.Priority)
+                {
+                    if (screen is MonoBehaviour)
+                    {
+                        var screenBehaviour = (MonoBehaviour) screen;
+                        ReparentToParaLayer(panelProperties.Priority, screenBehaviour.transform);
+                    }
+                }
+            }
+            
             screen.Show(properties);
         }
 
