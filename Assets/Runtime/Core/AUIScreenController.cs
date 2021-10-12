@@ -205,6 +205,8 @@ namespace deVoid.UIFramework
 
         private void DoAnimation(ATransitionComponent caller, Action callWhenFinished, bool isVisible)
         {
+            StopAllTransitions();
+            
             if (caller == null)
             {
                 gameObject.SetActive(isVisible);
@@ -242,6 +244,19 @@ namespace deVoid.UIFramework
             if (OutTransitionFinished != null)
             {
                 OutTransitionFinished(this);
+            }
+        }
+
+        private void StopAllTransitions()
+        {
+            if (AnimIn != null)
+            {
+                AnimIn.Stop(transform);
+            }
+
+            if (AnimOut != null)
+            {
+                AnimOut.Stop(transform);
             }
         }
     }

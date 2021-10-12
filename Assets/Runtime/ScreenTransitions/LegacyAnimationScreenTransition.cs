@@ -40,6 +40,10 @@ namespace deVoid.UIFramework.Examples
             StartCoroutine(PlayAnimationRoutine(targetAnimation, callWhenFinished));
         }
 
+        public override void Stop(Transform target) {
+            FinishPrevious();
+        }
+
         private IEnumerator PlayAnimationRoutine(Animation targetAnimation, Action callWhenFinished) {
             previousCallbackWhenFinished = callWhenFinished;
             foreach (AnimationState state in targetAnimation) {

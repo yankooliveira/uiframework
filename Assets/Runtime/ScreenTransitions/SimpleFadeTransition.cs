@@ -52,6 +52,10 @@ namespace deVoid.UIFramework
             shouldAnimate = true;
         }
 
+        public override void Stop(Transform target) {
+            shouldAnimate = false;
+        }
+
         private void Update() {
             if (!shouldAnimate) {
                 return;
