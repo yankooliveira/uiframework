@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace deVoid.UIFramework
@@ -16,7 +17,7 @@ namespace deVoid.UIFramework
         public IWindowController CurrentWindow { get; private set; }
         
         private Queue<WindowHistoryEntry> windowQueue;
-        private Stack<WindowHistoryEntry> windowHistory;
+        private List<WindowHistoryEntry> windowHistory;
 
         public event Action RequestScreenBlock;
         public event Action RequestScreenUnblock;
@@ -31,7 +32,7 @@ namespace deVoid.UIFramework
             base.Initialize();
             registeredScreens = new Dictionary<string, IWindowController>();
             windowQueue = new Queue<WindowHistoryEntry>();
-            windowHistory = new Stack<WindowHistoryEntry>();
+            windowHistory = new List<WindowHistoryEntry>();
             screensTransitioning = new HashSet<IUIScreenController>();
         }
 
@@ -66,7 +67,7 @@ namespace deVoid.UIFramework
 
         public override void HideScreen(IWindowController screen) {
             if (screen == CurrentWindow) {
-                windowHistory.Pop();
+                PopWindowHistoryEntry();
                 AddTransition(screen);
                 screen.Hide();
 
@@ -79,11 +80,10 @@ namespace deVoid.UIFramework
                     ShowPreviousInHistory();
                 }
             }
-            else {
-                Debug.LogError(
-                    string.Format(
-                        "[WindowUILayer] Hide requested on WindowId {0} but that's not the currently open one ({1})! Ignoring request.",
-                        screen.ScreenId, CurrentWindow != null ? CurrentWindow.ScreenId : "current is null"));
+            else if (windowHistory.Any(x => x.Screen == screen)) {
+                var windowHistoryEntry = windowHistory.Find(x => x.Screen == screen);
+                windowHistory.Remove(windowHistoryEntry);
+                screen.Hide();
             }
         }
 
@@ -132,7 +132,7 @@ namespace deVoid.UIFramework
 
         private void ShowPreviousInHistory() {
             if (windowHistory.Count > 0) {
-                WindowHistoryEntry window = windowHistory.Pop();
+                WindowHistoryEntry window = PopWindowHistoryEntry();
                 DoShow(window);
             }
         }
@@ -164,7 +164,7 @@ namespace deVoid.UIFramework
                 CurrentWindow.Hide();
             }
 
-            windowHistory.Push(windowEntry);
+            windowHistory.Add(windowEntry);
             AddTransition(windowEntry.Screen);
 
             if (windowEntry.Screen.IsPopup) {
@@ -206,6 +206,12 @@ namespace deVoid.UIFramework
                     RequestScreenUnblock();
                 }
             }
+        }
+
+        private  WindowHistoryEntry PopWindowHistoryEntry( ) {
+            var windowHistoryEntry = windowHistory.Last();
+            windowHistory.Remove(windowHistoryEntry);
+            return windowHistoryEntry;
         }
     }
 }
