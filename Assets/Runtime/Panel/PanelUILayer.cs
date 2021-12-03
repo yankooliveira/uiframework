@@ -45,8 +45,8 @@ namespace deVoid.UIFramework {
             screen.Show(properties);
         }
 
-        public override void HideScreen(IPanelController screen) {
-            screen.Hide();
+        public override void HideScreen(IPanelController screen, bool animate = true) {
+            screen.Hide(animate);
         }
 
         public bool IsPanelVisible(string panelId) {
