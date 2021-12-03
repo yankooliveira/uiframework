@@ -28,7 +28,7 @@ namespace deVoid.UIFramework {
         /// Hides a screen
         /// </summary>
         /// <param name="screen">The ScreenController to be hidden</param>
-        public abstract void HideScreen(TScreen screen);
+        public abstract void HideScreen(TScreen screen, bool animate = true);
 
         /// <summary>
         /// Initialize this layer
@@ -111,10 +111,10 @@ namespace deVoid.UIFramework {
         /// and hides it
         /// </summary>
         /// <param name="screenId">The id for this screen (by default, it's the name of the Prefab)</param>
-        public void HideScreenById(string screenId) {
+        public void HideScreenById(string screenId, bool animate = true) {
             TScreen ctl;
             if (registeredScreens.TryGetValue(screenId, out ctl)) {
-                HideScreen(ctl);
+                HideScreen(ctl, animate);
             }
             else {
                 Debug.LogError("[AUILayerController] Could not hide Screen ID " + screenId + " as it is not registered to this layer!");

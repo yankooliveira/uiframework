@@ -115,8 +115,8 @@ namespace deVoid.UIFramework
         /// Closes the Window with the given Id.
         /// </summary>
         /// <param name="screenId">Identifier.</param>
-        public void CloseWindow(string screenId) {
-            windowLayer.HideScreenById(screenId);
+        public void CloseWindow(string screenId, bool animate = true) {
+            windowLayer.HideScreenById(screenId, animate);
         }
         
         /// <summary>
