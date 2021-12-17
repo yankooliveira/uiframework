@@ -110,6 +110,11 @@ namespace deVoid.UIFramework
             base.ReparentScreen(controller, screenTransform);
         }
 
+        public bool IsWindowOpened(string screenId)
+        {
+            return registeredScreens.TryGetValue(screenId, out var ctl) && CurrentWindow == ctl;
+        }
+
         private void EnqueueWindow<TProp>(IWindowController screen, TProp properties) where TProp : IScreenProperties {
             windowQueue.Enqueue(new WindowHistoryEntry(screen, (IWindowProperties) properties));
         }

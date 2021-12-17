@@ -120,6 +120,24 @@ namespace deVoid.UIFramework
         }
         
         /// <summary>
+        /// Closes the Window with the given Id.
+        /// </summary>
+        /// <param name="screenId">Identifier.</param>
+        public void CloseScreen(string screenId, bool animate = true)
+        {
+            if (windowLayer.IsScreenRegistered(screenId))
+            {
+                windowLayer.HideScreenById(screenId, animate);
+                return;
+            }
+
+            if (panelLayer.IsScreenRegistered(screenId))
+            {
+                panelLayer.HideScreenById(screenId);
+            }
+        }
+        
+        /// <summary>
         /// Closes the currently open window, if any is open
         /// </summary>
         public void CloseCurrentWindow() {
@@ -225,6 +243,24 @@ namespace deVoid.UIFramework
         public void UnregisterWindow<TWindow>(string screenId, TWindow controller) where TWindow : IWindowController {
             windowLayer.UnregisterScreen(screenId, controller);
         }
+        
+        /// <summary>
+        /// Unregisters the Screen.
+        /// </summary>
+        /// <param name="screenId">Screen identifier.</param>
+        /// <param name="controller">Controller.</param>
+        public void UnregisterScreen(string screenId, IUIScreenController controller)
+        {
+            switch (controller)
+            {
+                case IWindowController window:
+                    windowLayer.UnregisterScreen(screenId, window);
+                    return;
+                case IPanelController panel:
+                    panelLayer.UnregisterScreen(screenId, panel);
+                    break;
+            }
+        }
 
         /// <summary>
         /// Checks if a given Panel is open.
@@ -302,6 +338,22 @@ namespace deVoid.UIFramework
             }
 
             type = null;
+            return false;
+        }
+        
+        /// <summary>
+        /// Checks if a given screen id is opened either on the Window or Panel layers
+        /// </summary>
+        /// <param name="screenId">The Id to check.</param>
+        public bool IsScreenOpened(string screenId) {
+            if (windowLayer.IsScreenRegistered(screenId)) {
+                return windowLayer.IsWindowOpened(screenId);
+            }
+
+            if (panelLayer.IsScreenRegistered(screenId)) {
+                return panelLayer.IsPanelVisible(screenId);
+            }
+
             return false;
         }
 
