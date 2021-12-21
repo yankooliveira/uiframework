@@ -190,7 +190,7 @@ namespace deVoid.UIFramework
             HierarchyFixOnShow();
             OnPropertiesSet();
 
-            if (!gameObject.activeSelf)
+            if (!gameObject.activeSelf || AnimOut != null)
             {
                 DoAnimation(animIn, OnTransitionInFinished, true);
             }
