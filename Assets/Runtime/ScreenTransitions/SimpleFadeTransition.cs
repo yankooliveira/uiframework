@@ -77,7 +77,15 @@ namespace deVoid.UIFramework
             }
             else
             {
-                canvasGroup.alpha = 1f;
+                if (fadeOut)
+                {
+                    canvasGroup.alpha = 0f;
+                }
+                else
+                {
+                    canvasGroup.alpha = 1f;
+                }
+                
                 if (currentAction != null)
                 {
                     currentAction();
