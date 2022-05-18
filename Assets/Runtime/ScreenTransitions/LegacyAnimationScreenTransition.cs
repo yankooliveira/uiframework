@@ -22,14 +22,20 @@ namespace deVoid.UIFramework.Examples
         [SerializeField] private AnimationClip clip = null;
         [SerializeField] private bool playReverse = false;
 
+        private Animation targetAnimation;
         private Action previousCallbackWhenFinished;
-        
-        public override void Animate(Transform target, Action callWhenFinished) {
+
+        public override void Animate(Transform target, Action callWhenFinished)
+        {
             FinishPrevious();
-            var targetAnimation = target.GetComponent<Animation>();
-            if (targetAnimation == null) {
+
+            targetAnimation = target.GetComponent<Animation>();
+
+            if (targetAnimation == null)
+            {
                 Debug.LogError("[LegacyAnimationScreenTransition] No Animation component in " + target);
-                if (callWhenFinished != null) {
+                if (callWhenFinished != null)
+                {
                     callWhenFinished();
                 }
 
@@ -40,13 +46,16 @@ namespace deVoid.UIFramework.Examples
             StartCoroutine(PlayAnimationRoutine(targetAnimation, callWhenFinished));
         }
 
-        public override void Stop(Transform target) {
+        public override void Stop(Transform target)
+        {
             FinishPrevious();
         }
 
-        private IEnumerator PlayAnimationRoutine(Animation targetAnimation, Action callWhenFinished) {
+        private IEnumerator PlayAnimationRoutine(Animation targetAnimation, Action callWhenFinished)
+        {
             previousCallbackWhenFinished = callWhenFinished;
-            foreach (AnimationState state in targetAnimation) {
+            foreach (AnimationState state in targetAnimation)
+            {
                 state.time = playReverse ? state.clip.length : 0f;
                 state.speed = playReverse ? -1f : 1f;
             }
@@ -55,9 +64,11 @@ namespace deVoid.UIFramework.Examples
             yield return new WaitForSeconds(targetAnimation.clip.length);
             FinishPrevious();
         }
-        
-        private void FinishPrevious() {
-            if (previousCallbackWhenFinished != null) {
+
+        private void FinishPrevious()
+        {
+            if (previousCallbackWhenFinished != null)
+            {
                 previousCallbackWhenFinished();
                 previousCallbackWhenFinished = null;
             }

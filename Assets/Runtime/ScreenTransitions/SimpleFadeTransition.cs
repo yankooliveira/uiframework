@@ -20,27 +20,33 @@ namespace deVoid.UIFramework
         private Action currentAction;
         private Transform currentTarget;
 
-        private float startValue;
-        private float endValue;
+        private float startValue = 0f;
+        private float endValue = 0f;
 
         private bool shouldAnimate;
 
-        public override void Animate(Transform target, Action callWhenFinished) {
-            if (currentAction != null) {
+        public override void Animate(Transform target, Action callWhenFinished)
+        {
+            currentTarget = target;
+            canvasGroup = target.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = target.gameObject.AddComponent<CanvasGroup>();
+            }
+
+            if (currentAction != null)
+            {
                 canvasGroup.alpha = endValue;
                 currentAction();
             }
 
-            canvasGroup = target.GetComponent<CanvasGroup>();
-            if (canvasGroup == null) {
-                canvasGroup = target.gameObject.AddComponent<CanvasGroup>();
-            }
-
-            if (fadeOut) {
+            if (fadeOut)
+            {
                 startValue = 1f;
                 endValue = 0f;
             }
-            else {
+            else
+            {
                 startValue = 0f;
                 endValue = 1f;
             }
@@ -52,22 +58,28 @@ namespace deVoid.UIFramework
             shouldAnimate = true;
         }
 
-        public override void Stop(Transform target) {
+        public override void Stop(Transform target)
+        {
             shouldAnimate = false;
         }
 
-        private void Update() {
-            if (!shouldAnimate) {
+        private void Update()
+        {
+            if (!shouldAnimate || canvasGroup == null)
+            {
                 return;
             }
 
-            if (timer > 0f) {
+            if (timer > 0f)
+            {
                 timer -= Time.deltaTime;
                 canvasGroup.alpha = Mathf.Lerp(endValue, startValue, timer / fadeDuration);
             }
-            else {
+            else
+            {
                 canvasGroup.alpha = 1f;
-                if (currentAction != null) {
+                if (currentAction != null)
+                {
                     currentAction();
                 }
 
