@@ -1,0 +1,14 @@
+{
+  "name": "com.woo.devoid-ui",
+  "version": "1.0.2",
+  "displayName": "deVoid UI Framework",
+  "description": "deVoid UI Framework package",
+  "unity": "2018.1",
+  "documentationUrl": "https://github.com/sgamerw/uiframework",
+  "licensesUrl": "https://github.com/sgamerw/uiframework/blob/master/LICENSE",
+  "dependencies": {
+  },
+  "author": {
+    "name": "yankooliveira, woo"
+  }
+}
