@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 414062f9d9180b24eb66136c31c0fe4c, type: 3}
+  m_Name: DefaultUISettings
+  m_EditorClassIdentifier: 
+  templateUIPrefab: {fileID: 358001020665244776, guid: 8ff5283766dd8614a8838c8489cb528c,
+    type: 3}
+  screensToRegister:
+  - {fileID: 7617306793594988998, guid: 0a680a728e2bff444bd5b6b236aac4ee, type: 3}
+  - {fileID: 3955197997429667027, guid: 45f336f4b18fc084db012ee283bb1be4, type: 3}
+  - {fileID: 3354577186298565417, guid: 3a68b7318cee11343af713222804c704, type: 3}
+  - {fileID: 3672568053856412771, guid: fb86aca5b5eaebe4bb3058576a1beadc, type: 3}
+  - {fileID: 8890043933281423490, guid: e7d17039446a5ac41afee18e47ffc57f, type: 3}
+  - {fileID: 2592118604778629170, guid: 88f2f76f2f0c8c640930f0bc9d5974c7, type: 3}
+  - {fileID: 3354577186298565417, guid: 80be0c317fa558843b7df437ee48c2ae, type: 3}
+  - {fileID: 3354577186298565417, guid: 98220a950995ef343bb8df2130378dda, type: 3}
+  - {fileID: 2198531993298414313, guid: 5637ec63a9899c340abe04789b5fa363, type: 3}
+  deactivateScreenGOs: 1

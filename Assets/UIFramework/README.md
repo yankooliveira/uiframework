@@ -63,15 +63,3 @@ Although the architecture itself is sound and was tested in live environments, t
 A lot of the structure is inspired by a design used by [Renan Rennó](https://www.linkedin.com/in/renanrenno/) when we worked together. Special thanks to everyone who I made use this architecture through the years and to [Sylvain Cornillon](https://www.bossastudios.com/the-team/), who allowed me to open source it and helped me find more proper names for the classes, or I'd be still calling it *"UIManagerOrWhatevs"* cause I'm a rebel.
 
 You can read my original (even more) verbose post about this architecture [in my blog](http://yankooliveira.com/index.php/2017/12/27/uisystem/) and poke me on twitter [@yankooliveira](https://twitter.com/yankooliveira).
-
-# deVoid UI Framework: Examples Repo
-This is the examples repository for the [deVoid UI Framework](https://github.com/yankooliveira/uiframework). It was made in a recent Unity version (2018.3.8f1) but it should work fine with previous versions down to at least 2017.
-
-While the main [*devUI* repo](https://github.com/yankooliveira/uiframework) is focused on being as lean as possible and having 0 dependencies, this one focuses on providing a showcase of the functionalities and covering most of the end user API provided by the framework. It includes external libraries (like [DOTween](http://dotween.demigiant.com/) and [Signals](https://github.com/yankooliveira/signals)), and exemplifies *one* possible way to organize your UI.
-
-I tried to comment the code thoroughly and keep it as straightforward as possible - which means in some cases it might not be as pristine as it could be, but the focus was on showing the Framework's capabilities (and using some of the code polishing time to write documentation instead). 
-
-*NOTE:* even though it is possible, I have decided not to include example Transition Components for the Animator because I think it's a bad idea to use it for UI (both for workflow and [performance reasons](https://www.youtube.com/watch?v=_wxitgdx-UI&t=2883s)) - I have instead opted for the lesser evil and added one using the legacy *Animation* component - if it ever does get deprecated I'll forever refer to Unity as *"The engine who cried wolf"* at this point. 
-
-## What to do?
-Download the project, open the *StartHere* scene, press play and explore away!
