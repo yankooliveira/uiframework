@@ -20,6 +20,7 @@
     {
         WindowPriority WindowQueuePriority { get; set; }
         bool HideOnForegroundLost { get; set; }
+        bool IgnoreHistory { get; set; }
         bool IsPopup { get; set; }
         bool SuppressPrefabProperties { get; set; }
     }

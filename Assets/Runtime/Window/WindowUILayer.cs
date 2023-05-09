@@ -164,7 +164,10 @@ namespace deVoid.UIFramework
                 CurrentWindow.Hide();
             }
 
-            windowHistory.Push(windowEntry);
+            if (!windowEntry.Screen.IgnoreHistory) {
+                windowHistory.Push(windowEntry);
+            }
+
             AddTransition(windowEntry.Screen);
 
             if (windowEntry.Screen.IsPopup) {

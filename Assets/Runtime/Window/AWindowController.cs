@@ -18,6 +18,10 @@
             get { return Properties.HideOnForegroundLost; }
         }
 
+        public bool IgnoreHistory {
+            get { return Properties.IgnoreHistory; }
+        }
+
         public bool IsPopup {
             get { return Properties.IsPopup; }
         }

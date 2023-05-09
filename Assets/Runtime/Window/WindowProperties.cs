@@ -8,6 +8,9 @@ namespace deVoid.UIFramework {
     public class WindowProperties : IWindowProperties {
         [SerializeField] 
         protected bool hideOnForegroundLost = true;
+        
+        [SerializeField] 
+        protected bool ignoreHistory = true;
 
         [SerializeField] 
         protected WindowPriority windowQueuePriority = WindowPriority.ForceForeground;
@@ -39,6 +42,16 @@ namespace deVoid.UIFramework {
         public bool HideOnForegroundLost {
             get { return hideOnForegroundLost; }
             set { hideOnForegroundLost = value; }
+        }
+
+        /// <summary>
+        /// Should this window ignore to be pushed to history?
+        /// </summary>
+        /// <value><c>true</c> ignore to be pushed to history; otherwise, <c>false</c>.</value>
+        public bool IgnoreHistory
+        {
+            get { return ignoreHistory; }
+            set { ignoreHistory = value; }
         }
 
         /// <summary>
